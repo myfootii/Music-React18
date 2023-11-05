@@ -1,8 +1,11 @@
+import Carousel from "@/pages/home/carousel"
+
+
 const Home=()=>{
   return (
-    <div>
-      home
-    </div>
+   <div>
+     <Carousel/>
+   </div>
   )
 }
 export default Home

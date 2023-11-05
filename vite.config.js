@@ -6,7 +6,15 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-        '@': '/src'
+        '@': '/src'      
       }    
-  }
+  },
+//   css: {
+//     preprocessorOptions: {
+//         scss: {
+//             javascriptEnabled: true,
+//             additionalData: '@import "@/index.scss";',
+//         },
+//     },
+// },
 })
