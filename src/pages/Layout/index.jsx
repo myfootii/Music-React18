@@ -7,6 +7,7 @@ import {
 } from '@ant-design/icons'
 import './index.scss'
 import {Outlet, useNavigate,useLocation } from 'react-router-dom'
+import Playbar from '@/components/playbar'
 
 const { Header, Sider } = Layout
 const items = [
@@ -62,12 +63,13 @@ const LayoutMain = () => {
             theme="dark"
             defaultSelectedKeys={seletKey}
             items={items}
-            style={{ minHeight: '90vh' ,borderRight: 0 }} onClick={(router)=>navToggle(router.key)}></Menu>
+            style={{borderRight: 0 }} onClick={(router)=>navToggle(router.key)}></Menu>
         </Sider>
-        <Layout className="layout-content" style={{ padding: 20 }}>
+        <Layout className="layout-content" style={{ padding:'20px 20px 70px 20px'}}>
           <Outlet/>
         </Layout>
       </Layout>
+      <Playbar/> 
     </Layout>
   )
 }
