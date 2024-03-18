@@ -48,10 +48,11 @@ export default memo(forwardRef(function Audio({ ctx }, ref) {
             if (mode === 2) { // 随机模式
                 index = Math.floor(Math.random() * playListStore.length - 1) + 1
             } else {
+                // 正常模式
                 if (type === 'prev') { // 上一首
-                    index = index === 0 ? playListStore.length - 1 : --index
+                    index = index === 0 ? playListStore.length - 1 : --index //是第一首则播放最后一首
                 } else {  // 下一首
-                    index = index >= playListStore.length - 1 ? 0 : ++index
+                    index = index >= playListStore.length - 1 ? 0 : ++index  //是最后一首则播放第一首
                 }
             }
 
@@ -65,6 +66,7 @@ export default memo(forwardRef(function Audio({ ctx }, ref) {
 
     // 单曲循环歌曲
     const loopSong = () => {
+        //就是把当前时间拉到开始
         const $myAudio = myAudio.current;
 
         $myAudio.currentTime = 0;
@@ -74,7 +76,7 @@ export default memo(forwardRef(function Audio({ ctx }, ref) {
 
     // 音频播放结束 自动播放下一首
     const endedSong = () => {
-        if (mode === 1) {
+        if (mode === 1) { // 单曲循环
             loopSong()
         } else {
             changeSong('next')
@@ -129,9 +131,9 @@ export default memo(forwardRef(function Audio({ ctx }, ref) {
     // 暴露出音频组件的方法,在其他组件调用
     useImperativeHandle(ref, () => {
         return {
-            playAudioType,
-            setVolumeHandler,
-            setAudioProgress,
+            playAudioType,  // 播放/暂停/上一首/下一首
+            setVolumeHandler, // 设置音量
+            setAudioProgress, // 设置音频进度
         }
     });
 

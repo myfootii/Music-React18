@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { Spin, App } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -68,6 +68,9 @@ export default function PlayList() {
     };
 
     // 加载更多
+    // function loadMore() {
+    //     console.log(111)
+    // }
     const loadMore = () => {
         console.log(111)
         if (!listLoad) {
@@ -136,16 +139,18 @@ export default function PlayList() {
                             </em>)
                         }
                     </h2>
-                    <div className={plSty.type}>
+                    {/* <div className={plSty.type}>
                         <span className={params.order === 'hot' ? 'active' : ''}>热门</span>
-                    </div>
+                    </div> */}
                 </div>
                 <InfiniteScroll
                     dataLength={lists.length}
                     next={loadMore}
-                    hasMore={true}
-                    // hasMore={lists.length < total}
-                    // scrollThreshold={0.7}
+                    hasMore={lists.length < total}
+                    // hasMore={true}
+                    // loader={<h3>load...</h3>}
+                    // pullDownToRefresh
+                    // pullDownToRefreshThreshold={50}
                 >
                     <PlayListMain lists={lists} loading={listLoad} />
                 </InfiniteScroll>

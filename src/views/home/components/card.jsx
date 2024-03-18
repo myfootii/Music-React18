@@ -1,5 +1,5 @@
 import { useState, memo } from 'react';
-import cardSty from './scss/card.module.scss';
+import cardSty from '../scss/card.module.scss';
 
 export default memo(function Card({ title, tags, children, getIndex}) {
     console.log(333)

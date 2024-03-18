@@ -1,5 +1,34 @@
 import api from './instance';
 
+// 二维码登录
+// 1、调用此接口可生成一个 key
+const getQRkey = () => { return api.get(`/login/qr/key?timestamp=${Date.now()}`, {}) };
+/*
+    * 2、二维码生成接口
+    * 调用此接口可生成二维码图片的 base64 和二维码信息
+    * 可选参数: qrimg 传入后会额外返回二维码图片 base64 编码
+*/
+const createQR = ({ key = '', qrimg = true }) => { return api.get(`/login/qr/create?key=${key}&qrimg=${qrimg}&timerstamp=${Date.now()}`, {}) };
+// 3、二维码检测扫码状态接口
+// 获取二维码扫码状态：800 为二维码过期；801 为等待扫码；802 为待确认；803 为授权登录成功(803 状态码下会返回 cookies)
+const checkQR = ({ key = '' }) => { return api.get(`/login/qr/check?key=${key}&timestamp=${Date.now()}`, {}) };
+// 4、根据返回的cookies，获取用户登录的状态
+const getQRLogin = ({ cookie = '' }) => { return api.post(`/login/status?timestamp=${Date.now()}`, { cookie }) };
+
+// 邮箱账号密码登录
+const loginPwd = ({ email = '', password = '' }) => { return api.post(`/login`, {email, password }) };
+// 发送验证码
+const sentCode = ({ phone = '', ctcode = '86' }) => { return api.get(`/captcha/sent?phone=${phone}&ctcode=${ctcode}`, {})};
+// 验证验证码
+const verifyCode = ({ phone = '', ctcode = '86', captcha = '' }) => { return api.get(`/captcha/verify?phone=${phone}&ctcode=${ctcode}&captcha=${captcha}`, {})};
+// 手机号快捷登录
+const loginPhone = ({ phone = '', password = '', ctcode = '86', captcha = '' }) => { return api.post(`/login/cellphone`, {phone, password, countrycode: ctcode, captcha }) };
+// 退出登录
+const logout = () => { return api.get('/logout', {}) }
+
+
+
+
 // 首页轮播图
 const getBanner = () => { return api.get('/banner', {}) };
 
@@ -69,6 +98,15 @@ export {
   
   songDetail,
   simiSong,
-  simiPlayList
+  simiPlayList,
 
+  getQRkey,
+  createQR,
+  getQRLogin, 
+  checkQR,
+  loginPwd,
+  sentCode, 
+  logout,
+  verifyCode,
+  loginPhone
 }

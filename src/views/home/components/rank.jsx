@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { toplist, topRankList } from '@/apis/home.js';
 import { formatSongs, formartDate } from '@/utils/index';
 import { playListInfoStore } from '@/store/index';
-import rankSty from './scss/rank.module.scss';
+import rankSty from '../scss/rank.module.scss';
 import { Skeleton, Image, App } from 'antd';
 
 const LIMIT = 6, LIST = 4;

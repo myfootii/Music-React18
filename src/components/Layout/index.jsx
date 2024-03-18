@@ -1,12 +1,13 @@
-import { Layout, Menu, Popconfirm } from 'antd'
+import { Layout, Menu} from 'antd'
+import Login from '@/components/login'
+import Routers from '@/router';
 import {
   HomeOutlined,
   DiffOutlined,
   EditOutlined,
-  LogoutOutlined,
 } from '@ant-design/icons'
 import './index.scss'
-import {Outlet, useNavigate,useLocation } from 'react-router-dom'
+import { useNavigate,useLocation } from 'react-router-dom'
 import Playbar from '@/components/playbar'
 
 const { Header, Sider } = Layout
@@ -26,16 +27,16 @@ const items = [
     key: '/playlist',
     icon: <EditOutlined />,
   },
-  {
-    label: 'MV',
-    key: '/mv',
-    icon: <EditOutlined />,
-  },
-  {
-    label: '歌手',
-    key: '/singer',
-    icon: <EditOutlined />,
-  },
+  // {
+  //   label: 'MV',
+  //   key: '/mv',
+  //   icon: <EditOutlined />,
+  // },
+  // {
+  //   label: '歌手',
+  //   key: '/singer',
+  //   icon: <EditOutlined />,
+  // },
 ]
 
 const LayoutMain = () => {
@@ -44,29 +45,24 @@ const LayoutMain = () => {
   const location = useLocation()
   const seletKey=location.pathname
   return (
-    <Layout>
+    <Layout className='layout'>
       <Header className="header">
         <div className="logo" />
         <div className="user-info">
-          <span className="user-name">heyuling</span>
-          <span className="user-logout">
-            <Popconfirm title="是否确认退出？" okText="退出" cancelText="取消">
-              <LogoutOutlined /> 退出
-            </Popconfirm>
-          </span>
+          <Login/>         
         </div>
       </Header>
       <Layout>
-        <Sider width={200} className="site-layout-background">
+        <Sider width={150} theme="light" className="sider">
           <Menu
             mode="inline"
-            theme="dark"
+            theme="light"
             defaultSelectedKeys={seletKey}
             items={items}
             style={{borderRight: 0 }} onClick={(router)=>navToggle(router.key)}></Menu>
         </Sider>
-        <Layout className="layout-content" style={{ padding:'20px 20px 70px 20px'}}>
-          <Outlet/>
+        <Layout className="layout-content">
+          <Routers/>
         </Layout>
       </Layout>
       <Playbar/> 

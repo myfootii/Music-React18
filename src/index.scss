@@ -1,15 +1,12 @@
 html,
 body {
   margin: 0;
-  height: 100%;
 }
 h4{
   margin: 0;
 }
 
 #root {
-  height: 100%;
-
   --white-color: #fff; 
   --black-color:#0c0c0d; 
   --gray-color: #18181B;
@@ -35,6 +32,7 @@ h4{
   --menu-width: 200px;
   --side-width: 380px;
   --padding-width: 20px;
+  background-color: var(--white-color);
 }
 
 // 计算出当前DOM的高度 = 实际高度 / 实际宽度 * 高度
@@ -44,7 +42,7 @@ h4{
 
 // 滚动条样式
 ::-webkit-scrollbar { 
-width: 0px;
+width: 10px;
 }
 ::-webkit-scrollbar-track {
 border-radius: 8px;
@@ -62,4 +60,4 @@ background: var(--t-muted-color);
 $menuWidth: var(--menu-width);
 $sideWidth: var(--side-width);
 $paddingW: var(--padding-width);
-$containerWidth: calc(100vw - $menuWidth - $paddingW - $paddingW);
+$containerWidth: max(calc(100vw - $menuWidth - $paddingW - $paddingW), 1100px);

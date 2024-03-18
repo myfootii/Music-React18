@@ -14,7 +14,7 @@ $w: calc(($containerWidth - 90px) / 3);
 .banner_wrap {
     padding: 35px 0;
     width: 100%;
-    @include calcHeight($w, 1080, 400);
+    @include calcHeight($w, 1080, 500);
 
     .banner_img {
         width: 100%;
@@ -33,16 +33,16 @@ $w: calc(($containerWidth - 90px) / 3);
     width: 100%;
     font-size: 0;
     
-    // .ant-skeleton-content {
-    //     position: relative;
-    //     padding: 35px 0;
-    //     width: 100%;
-    //     @include calcHeight($w, 1080, 400);
+    .ant-skeleton-content {
+        position: relative;
+        padding: 35px 0;
+        width: 100%;
+        @include calcHeight($w, 1080, 500);
     
-    //     .ant-skeleton-title {
-    //         @include calcHeight($w, 1080, 400);
-    //     }
-    // }
+        .ant-skeleton-title {
+            @include calcHeight($w, 1080, 500);
+        }
+    }
 }
 
 

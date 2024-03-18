@@ -80,11 +80,13 @@ export default memo(function Lyric({ sId, currentTime = 0, maxH = '390px'}) {
     const transformLyric = useMemo(() => {
         if (curSongInfo && curSongInfo.id == sId) {
             let num = 0, max = 13;
-            if (curIndex < Math.ceil(max / 2) || lyric.length <= max) {
+            if (curIndex < Math.ceil(max / 2) || lyric.length <= max) { // 歌词长度小于13行或者当前歌词没超过7行
                 num = 0;
-            } else if (curIndex >= lyric.length - max && (curIndex >= lyric.length - Math.ceil(max / 2)) && lyric.length > max) {
+            } else if (curIndex >= lyric.length - max && (curIndex >= lyric.length - Math.ceil(max / 2)) && lyric.length > max) { 
+                // 歌词长度最后7行，直接歌词滚动到最后一行，不再滚动
                 num = (lyric.length - max) * 30;
             } else {
+                //中间歌词一行一行的滚
                 num = (curIndex - Math.floor(max / 2)) * 30;
             }
 

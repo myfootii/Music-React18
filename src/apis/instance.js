@@ -13,7 +13,8 @@ const instance = axios.create({
     validateStatus: status => {
         return status >= 200 && status < 600; // default
     },
-    baseURL: 'https://service-pwwid9uu-1301083376.gz.apigw.tencentcs.com/release'
+    // baseURL: 'https://service-pwwid9uu-1301083376.gz.apigw.tencentcs.com/release'
+    baseURL: 'https://api.trtst.com'
 });
 
 // 拦截器

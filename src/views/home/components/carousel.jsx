@@ -1,4 +1,4 @@
-import './scss/carousel.scss';
+import '../scss/carousel.scss';
 import { Swiper, SwiperSlide} from 'swiper/react';
 import { Pagination,EffectCoverflow,Autoplay} from 'swiper/modules';
 import { Image,Skeleton,App } from 'antd';
@@ -34,19 +34,12 @@ const Carousel=()=>{
       {
         <Skeleton loading={loading} active paragraph={false} className='Skeleton-banner'>
           <Swiper
-            // install Swiper modules
-            modules={[Pagination,EffectCoverflow,Autoplay]}
-            spaceBetween={50}
-            slidesPerView={3}
-            centeredSlides={true}
-            loop={true}
-            loopedSlides={3}
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 3000 }}
-            // coverflowEffect={{modifier:2,rotate:0,depth:160,stretch:70}}
-            coverflowEffect={{modifier:1,rotate:0,depth:100,stretch:70,slideShadows : false}}
-            effect="coverflow"
-            className='banner_wrap'
+             spaceBetween={50}
+             slidesPerView={3}
+             autoplay={{ delay: 3000 }}
+             pagination={{ clickable: true }}
+             modules={[Pagination, Autoplay]}
+             className="banner_wrap"
           >
             {/* <SwiperSlide><Image  preview={false} src={a} width={280} height={200}/></SwiperSlide>
             <SwiperSlide><Image  preview={false} src={a} width={280} height={200}/></SwiperSlide>

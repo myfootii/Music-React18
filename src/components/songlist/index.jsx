@@ -190,9 +190,9 @@ export default memo(function SongList({ lists, typeSize = '', pageSize = 20, isS
                                     </div>
                                     <div className={`${sty.columnSong} ${sty.songName}`}>
                                         <Link to={`/song?id=${item.id}`} className={sty.songTitle}>{ item.name }</Link>
-                                        {
+                                        {/* {
                                             typeSize !== 'mini' && item.mvId && (<Link className={sty.mvName} to={`/mv?id=${item.mvId}`}><i className="iconfont icon-mvlist"></i></Link>)
-                                        }
+                                        } */}
                                         {
                                             typeSize !== 'mini' && item.vip && (<i className="iconfont icon-vip"></i>)
                                         }
@@ -201,7 +201,8 @@ export default memo(function SongList({ lists, typeSize = '', pageSize = 20, isS
                                         {
                                             item.singer.map((author,k) => 
                                                 <Fragment key={author.id}>
-                                                    <Link to={`/singer/detail?id=${author.id}`} className={sty.songSinger}>{ author.name }</Link><span>/</span>
+                                                    <im className={sty.songSinger}>{ author.name }</im><span>/</span>
+                                                    {/* <Link to={`/singer/detail?id=${author.id}`} className={sty.songSinger}>{ author.name }</Link><span>/</span> */}
                                                 </Fragment>
                                             )
                                         }
@@ -209,7 +210,8 @@ export default memo(function SongList({ lists, typeSize = '', pageSize = 20, isS
                                     {
                                         typeSize !== 'mini' && (
                                             <div className={sty.columnAlbum}>
-                                                <Link className={sty.album} to={`/album?id=${item.album.id}`}>{ item.album.name }</Link>
+                                                <span>{ item.album.name }</span>
+                                                {/* <Link className={sty.album} to={`/album?id=${item.album.id}`}>{ item.album.name }</Link> */}
                                             </div>
                                         )
                                     }

@@ -2,8 +2,12 @@
     padding: 35px 0 0 0;
 }
 
+.wrapper {
+    overflow: auto;
+}
+
 .card {
-    height: 218px;
+    height: 240px;
     padding: 0 20px;
     margin-bottom: 20px;
     box-shadow: var(--t-modal-shadow);
@@ -42,7 +46,7 @@
                 width: 70px;
                 font-size: 14px;
                 line-height: 14px;
-                height: 14px;
+                height: 15px;
                 margin: 5px 0;
                 overflow: hidden;
                 text-overflow: ellipsis;
